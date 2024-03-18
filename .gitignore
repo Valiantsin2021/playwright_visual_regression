@@ -1,0 +1,15 @@
+node_modules/
+test-results
+playwright-report
+allure-results
+allure-report
+.env
+playwright/
+report/
+docs/
+fixtures/DIH/test_data/temp/perfTraces.json
+.attach_pid*
+K6_summary.json
+K6_summary.html
+K6_summary.xml
+tempCodeRunnerFile.js

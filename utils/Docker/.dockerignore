@@ -1,0 +1,6 @@
+.auth
+.node_modules
+playwright-image-version.sh
+test-results
+allure-report
+allure-results
