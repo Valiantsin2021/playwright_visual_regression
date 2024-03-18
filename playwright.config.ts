@@ -30,7 +30,7 @@ export default defineConfig({
   retries: isCI ? 2 : 0,
   workers: isCI ? 1 : undefined,
   reportSlowTests: null,
-  ignoreSnapshots: isCI,
+  // ignoreSnapshots: isCI,
   snapshotPathTemplate: '.screenshots/snaps/{projectName}/{testFilePath}/{testName}/{arg}{ext}',
   reporter: [
     ['list', { printSteps: true }],
