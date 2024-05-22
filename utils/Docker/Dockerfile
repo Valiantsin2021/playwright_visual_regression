@@ -7,7 +7,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /app
-RUN npx playwright install chrome
 RUN  adduser testrunner && usermod -aG sudo testrunner
 RUN chown  -R testrunner:testrunner /app
 USER testrunner
