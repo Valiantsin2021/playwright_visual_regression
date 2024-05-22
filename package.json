@@ -18,7 +18,8 @@
     "format": "echo Formatting the code ⌛ && prettier --write ./tests/**/*.ts && echo \"✅ Code formatted, ready to commit!\"",
     "lint": "echo Linting the code ⌛ && eslint --fix && echo \"✅ Code linted, ready to commit!\"",
     "docs": "jsdoc -d docs -c jsdoc.config.json",
-    "code:check": "tsc --noEmit"
+    "code:check": "tsc --noEmit",
+    "prepare": "husky"
   },
   "husky": {
     "hooks": {
@@ -51,7 +52,7 @@
     "eslint-plugin-playwright": "^1.6.2",
     "eslint-plugin-prettier": "5.1.3",
     "eyes": "^0.1.8",
-    "husky": "4.3.8",
+    "husky": "^9.0.11",
     "monocart-reporter": "^2.4.7",
     "prettier": "3.2.5",
     "rimraf": "3.0.0",
