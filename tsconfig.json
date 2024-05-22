@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
     "strict": false,
     "target": "ESNext",
     "module": "commonjs",
@@ -14,7 +17,5 @@
       "@pages/*": ["pages/*"]
     }
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

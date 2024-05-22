@@ -1,4 +1,4 @@
-import { type Page, type Locator } from "@playwright/test"
+import { type Page, type Locator } from '@playwright/test'
 
 export class SignupComponent {
   page: Page
@@ -19,7 +19,7 @@ export class SignupComponent {
   zipCodeInput: Locator
   mobilePhoneInput: Locator
   createAccountBtn: Locator
-  
+
   constructor(page: Page) {
     this.page = page
     this.radioMail = page.getByLabel('Mr.')

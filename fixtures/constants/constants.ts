@@ -7,6 +7,8 @@ export const constants: {
   textMsg: string
   filename: string
   note: string
+  pokedex: string
+  rickAndMorty: string
 } = {
   baseURL: 'https://automationexercise.com/',
   userName: 'Warehouse Manager',
@@ -16,4 +18,6 @@ export const constants: {
   textMsg: 'Test message to send via the Contuct Us form',
   filename: './fixtures/test_data/valid/test.txt',
   note: 'Below is the list of test Cases for you to practice the Automation. Click on the scenario for detailed Test Steps:',
+  pokedex: 'https://pokeapi.co/api/v2/pokemon/',
+  rickAndMorty: 'https://rickandmortyapi.com/api'
 }

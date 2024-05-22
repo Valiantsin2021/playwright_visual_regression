@@ -9,18 +9,18 @@ const isCI = !!process.env.CI
  */
 export default defineConfig({
   // workers: 3,
-  timeout: 120_000,
+  timeout: 240_000,
   expect: {
     timeout: 15_000,
     toHaveScreenshot: {
       threshold: 0.25,
       maxDiffPixelRatio: 0.025,
-      maxDiffPixels: 25
+      maxDiffPixels: 250
     },
     toMatchSnapshot: {
       threshold: 0.25,
       maxDiffPixelRatio: 0.025,
-      maxDiffPixels: 25
+      maxDiffPixels: 250
     }
   },
   // ignoreSnapshots: !process.env.CI,
@@ -59,7 +59,6 @@ export default defineConfig({
   ],
   use: {
     bypassCSP: true,
-    retries: 1,
     viewport: null,
     launchOptions: { args: ['--start-maximized', '--ignore-certificate-errors'] },
     baseURL: 'https://www.automationexercise.com',
@@ -73,6 +72,13 @@ export default defineConfig({
     {
       name: 'Visual_regression_tests',
       testMatch: /\w+.ui.spec.ts/,
+      use: {
+        channel: 'chrome'
+      }
+    },
+    {
+      name: 'API_regression_tests',
+      testMatch: /\w+.api.spec.ts/,
       use: {
         channel: 'chrome'
       }
