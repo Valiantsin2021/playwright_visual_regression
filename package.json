@@ -21,12 +21,6 @@
     "code:check": "tsc --noEmit",
     "prepare": "husky"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged",
-      "pre-push": "git pull"
-    }
-  },
   "lint-staged": {
     "**/*.+(cjs|js|ts|tsx)": [
       "eslint --fix"
