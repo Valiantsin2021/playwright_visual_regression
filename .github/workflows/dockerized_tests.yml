@@ -2,7 +2,7 @@ name: Test local app in a docker container (Playwright)
 on:
   push:
     branches: [main, master]
-  workflow_dispatch: 
+  workflow_dispatch:
   pull_request:
     branches: [main, master]
     types: [opened, synchronize]
@@ -28,7 +28,9 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/*.lock') }}
       # run Docker build and run image
       - name: Run tests in a container
-        run: sh ./scripts/docker_build_and_run.sh
+        run: |
+          npx playwright install chrome
+          sh ./scripts/docker_build_and_run.sh
       - uses: actions/upload-artifact@v4
         if: always()
         with:
