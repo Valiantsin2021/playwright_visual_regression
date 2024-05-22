@@ -6,7 +6,3 @@ allure-report
 .env
 playwright/
 report/
-docs/
-fixtures/DIH/test_data/temp/perfTraces.json
-.attach_pid*
-tempCodeRunnerFile.js
