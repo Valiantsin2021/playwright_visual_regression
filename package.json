@@ -19,7 +19,7 @@
     "lint": "echo Linting the code ⌛ && eslint --fix && echo \"✅ Code linted, ready to commit!\"",
     "docs": "jsdoc -d docs -c jsdoc.config.json",
     "code:check": "tsc --noEmit",
-    "prepare": "husky init && husky add .husky/pre-commit 'npx --no-install lint-staged'"
+    "prepare": "echo \"npx --no-install lint-staged\" > .husky/pre-commit"
   },
   "lint-staged": {
     "**/*.+(cjs|js|ts|tsx)": [

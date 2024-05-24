@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
       - name: Checkout project
       # install the dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
       # Cache Docker layers
       - name: Cache Docker layers
         uses: actions/cache@v4
