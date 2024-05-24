@@ -17,7 +17,7 @@ export class API {
   async #makeRequest(endpoint: string, method: string, reqBody = null, token = null, params = null, formUrl = null, log = false) {
     log ? Logger.logRequest(endpoint, reqBody) : null
     const res = await this.request[method](endpoint, {
-      headers: token ? { Authorization: `Token ${token}`, 'Content-Type': 'application/json' } : {},
+      headers: token ? { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } : {},
       data: reqBody ? reqBody : undefined,
       form: formUrl ? formUrl : undefined,
       params: params ? params : undefined
