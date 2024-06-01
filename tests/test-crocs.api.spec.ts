@@ -1,11 +1,24 @@
-import { test, expect } from '@fixtures/fixtureApi.ts'
+import { test, expect } from '@fixtures/fixtureApi'
 const baseUrl = process.env.CROCODILES_URI
 
-test.describe('API tests', () => {
+test.describe.serial('API tests', () => {
+  test.beforeAll(async ({ api }) => {
+    const user = process.env.USER
+    const password = process.env.PASS
+    const payload = {
+      username: user,
+      password: password
+    }
+    const response = await api.postReq(baseUrl + '/auth/token/login/', payload)
+    expect.soft([200, 201, 204, 207], 'Response status code is one of [200, 201, 204, 207]').toContain(response.status())
+    const body = await response.json()
+    const token = body['access']
+    process.env.TOKEN = token
+  })
   test(`GET Crocs`, async ({ api }) => {
     const response = await api.getReq(baseUrl + '/public/crocodiles')
-    const body = await response.json()
     expect.soft([200, 201, 204, 207], 'Response status code is one of [200, 201, 204, 207]').toContain(response.status())
+    const body = await response.json()
     expect.soft(body[0]['id'], 'Assert body[0]["id"] is a number 1').toBe(1)
     expect.soft(body[0]['name'], 'Assert body[0]["name"] is a string "Bert"').toBe('Bert')
     expect.soft(body[0]['sex'], 'Assert body[0]["sex"] is a string "M"').toBe('M')
@@ -46,18 +59,6 @@ test.describe('API tests', () => {
     expect.soft(body[7]['sex'], 'Assert body[7]["sex"] is a string "M"').toBe('M')
     expect.soft(body[7]['date_of_birth'], 'Assert body[7]["date_of_birth"] matches pattern').toMatch(/^(\d{4})(-|\/)(\d{2})(-|\/)(\d{2})$/)
     expect.soft(body[7]['age'], 'Assert body[7]["age"] is a number 43').toBe(43)
-  })
-  test(`POST token`, async ({ api }) => {
-    const user = process.env.USER
-    const password = process.env.PASS
-    const payload = {
-      username: user,
-      password: password
-    }
-    const response = await api.postReq(baseUrl + '/auth/token/login/', payload)
-    const body = await response.json()
-    const token = body['access']
-    process.env.TOKEN = token
   })
   test(`GET my crocodiles`, async ({ api }) => {
     const response = await api.getReq(baseUrl + '/my/crocodiles', process.env.TOKEN)

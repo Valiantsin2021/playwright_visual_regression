@@ -46,7 +46,7 @@ export default [
       eqeqeq: 'error',
       'no-with': 'error',
       'func-call-spacing': ['error', 'never'],
-      'max-len': ['off', { code: 200, ignoreComments: true }],
+      'max-len': ['warn', { code: 200, ignoreComments: true }],
       'new-cap': ['error', { newIsCap: true }],
       'new-parens': 'error',
       quotes: ['warn', 'single', { avoidEscape: true, allowTemplateLiterals: true }],

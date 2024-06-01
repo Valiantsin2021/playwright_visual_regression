@@ -8,6 +8,10 @@ import { TestCasesPage } from '@pages/TestCasesPage'
 import { ProductsPage } from '@pages/ProductsPage'
 import { CartPage } from '@pages/CartPage'
 import { SingleProductPage } from '@pages/SingleProductPage'
+import { mergeExpects } from '@playwright/test'
+import { expect as toBeOneOfValuesExpect } from '@fixtures/toBeOneOfValues'
+import { expect as toBeValidDate } from '@fixtures/toBeValidDate'
+import { expect as typesExpects } from '@fixtures/typesExpects'
 
 // Declare the types of your fixtures.
 type MyFixtures = {
@@ -66,4 +70,4 @@ export const test = base.extend<MyFixtures>({
     await use(cartPage)
   }
 })
-export { expect } from '@playwright/test'
+export const expect = mergeExpects(toBeOneOfValuesExpect, toBeValidDate, typesExpects)

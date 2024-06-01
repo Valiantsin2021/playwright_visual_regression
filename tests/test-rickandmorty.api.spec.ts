@@ -1,4 +1,4 @@
-import { test, expect } from '@fixtures/fixtureApi.ts'
+import { test, expect } from '@fixtures/fixtureApi'
 import { constants } from '@fixtures/constants/constants'
 // import fs from 'fs'
 const links = []
@@ -54,7 +54,7 @@ test.describe.serial('API tests Rick and Morty', () => {
     const personsEndpoint = links.filter(el => el.includes('character'))
     const response = await api.getReq(personsEndpoint[0])
     const data = await response.json()
-    const {pages} = data.info
+    const { pages } = data.info
     for (let i = 1; i <= pages; i++) {
       const result = await api.getReq(personsEndpoint[0] + `?page=${i}`)
       const data = await result.json()

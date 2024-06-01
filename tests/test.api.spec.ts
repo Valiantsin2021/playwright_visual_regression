@@ -1,4 +1,4 @@
-import { test, expect } from '@fixtures/fixtureApi.ts'
+import { test, expect } from '@fixtures/fixtureApi'
 import { constants } from '@fixtures/constants/constants'
 
 test.describe('API tests', () => {
