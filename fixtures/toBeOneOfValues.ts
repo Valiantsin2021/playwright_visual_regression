@@ -2,7 +2,7 @@ import { expect as baseExpect } from '@playwright/test'
 
 export { test } from '@playwright/test'
 
-export const expect = baseExpect.soft.extend({
+export const expect = baseExpect.extend({
   toBeOneOfValues(received: any, array: any[]) {
     const pass = array.includes(received)
     if (pass) {

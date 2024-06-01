@@ -2,7 +2,7 @@ import { expect as baseExpect } from '@playwright/test'
 
 export { test } from '@playwright/test'
 
-export const expect = baseExpect.soft.extend({
+export const expect = baseExpect.extend({
   toBeValidDate(received: any) {
     const pass = Date.parse(received) && typeof received === 'string' ? true : false
     if (pass) {

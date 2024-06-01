@@ -2,7 +2,7 @@ import { expect as baseExpect } from '@playwright/test'
 
 export { test } from '@playwright/test'
 
-export const expect = baseExpect.soft.extend({
+export const expect = baseExpect.extend({
   toBeOneOfTypes(received: any, array: string[]) {
     const pass = array.includes(typeof received) || (array.includes(null) && received === null)
 
