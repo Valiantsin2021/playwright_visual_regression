@@ -2,10 +2,12 @@ import prettier from 'eslint-config-prettier'
 import playwright from 'eslint-plugin-playwright'
 import globals from 'globals'
 import parser from '@typescript-eslint/parser'
+import typescript from '@typescript-eslint/eslint-plugin'
+const { configs: typescriptConfigs } = typescript
 
 export default [
   {
-    plugins: { prettier, playwright },
+    plugins: { prettier, playwright, '@typescript-eslint': typescript },
     files: ['tests/*.spec.ts', 'fixtures/**/*.ts', 'pages/*.ts', 'utils/*.ts'],
     languageOptions: {
       parser,
@@ -22,6 +24,8 @@ export default [
       }
     },
     rules: {
+      ...typescriptConfigs.recommended.rules,
+      ...playwright.configs['flat/recommended'].rules,
       'playwright/no-conditional-in-test': 'off',
       'playwright/expect-expect': 'off',
       'playwright/no-focused-test': 'error',

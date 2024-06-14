@@ -25,7 +25,7 @@ export class API {
     try {
       log ? Logger.logResponse(res.status(), await res.json()) : null
     } catch (err) {
-      log ? Logger.logResponse(res.status(), await res.text()) : null
+      log ? Logger.logResponse(res.status(), await res.text()) : err.message
     }
     return res
   }

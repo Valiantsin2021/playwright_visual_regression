@@ -1,10 +1,8 @@
-import { BasePage } from '@pages/BasePage'
-import { constants } from '@fixtures/constants/constants'
 import { HomePage } from '@pages/HomePage'
 import { type Locator, type Page } from '@playwright/test'
 
 
-export class ProductsPage extends HomePage {  
+export class ProductsPage extends HomePage {
   sideHeaderCategory: Locator
   sideHeaderBrands: Locator
   categories: Locator

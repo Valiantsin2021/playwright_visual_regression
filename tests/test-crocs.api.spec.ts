@@ -3,8 +3,7 @@ const baseUrl = process.env.CROCODILES_URI
 
 test.describe.serial('API tests', () => {
   test.beforeAll(async ({ api }) => {
-    const user = process.env.USER
-    const password = process.env.PASS
+    const { USER: user, PASS: password } = process.env
     const payload = {
       username: user,
       password: password
