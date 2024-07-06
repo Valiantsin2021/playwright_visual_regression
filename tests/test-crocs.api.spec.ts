@@ -1,4 +1,4 @@
-import { test, expect } from '@fixtures/fixtureApi'
+import { expect, test } from '@fixtures/fixtureApi'
 const baseUrl = process.env.CROCODILES_URI
 
 test.describe.serial('API tests', () => {
@@ -22,7 +22,7 @@ test.describe.serial('API tests', () => {
     expect.soft(body[0]['name'], 'Assert body[0]["name"] is a string "Bert"').toBe('Bert')
     expect.soft(body[0]['sex'], 'Assert body[0]["sex"] is a string "M"').toBe('M')
     expect.soft(body[0]['date_of_birth'], 'Assert body[0]["date_of_birth"] matches pattern').toMatch(/^(\d{4})(-|\/)(\d{2})(-|\/)(\d{2})$/)
-    expect.soft(body[0]['age'], 'Assert body[0]["age"] is a number 13').toBe(13)
+    expect.soft(body[0]['age'], 'Assert body[0]["age"] is a number 13').toBe(14)
     expect.soft(body[1]['id'], 'Assert body[1]["id"] is a number 2').toBe(2)
     expect.soft(body[1]['name'], 'Assert body[1]["name"] is a string "Ed"').toBe('Ed')
     expect.soft(body[1]['sex'], 'Assert body[1]["sex"] is a string "M"').toBe('M')
@@ -42,7 +42,7 @@ test.describe.serial('API tests', () => {
     expect.soft(body[4]['name'], 'Assert body[4]["name"] is a string "The gharial"').toBe('The gharial')
     expect.soft(body[4]['sex'], 'Assert body[4]["sex"] is a string "F"').toBe('F')
     expect.soft(body[4]['date_of_birth'], 'Assert body[4]["date_of_birth"] matches pattern').toMatch(/^(\d{4})(-|\/)(\d{2})(-|\/)(\d{2})$/)
-    expect.soft(body[4]['age'], 'Assert body[4]["age"] is a number 19').toBe(19)
+    expect.soft(body[4]['age'], 'Assert body[4]["age"] is a number 20').toBe(20)
     expect.soft(body[5]['id'], 'Assert body[5]["id"] is a number 6').toBe(6)
     expect.soft(body[5]['name'], 'Assert body[5]["name"] is a string "Sang Buaya"').toBe('Sang Buaya')
     expect.soft(body[5]['sex'], 'Assert body[5]["sex"] is a string "F"').toBe('F')

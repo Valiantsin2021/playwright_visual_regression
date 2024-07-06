@@ -1,6 +1,5 @@
+import { request, type APIRequestContext, type Page } from '@playwright/test'
 import { Logger } from './Logger'
-import { request } from '@playwright/test'
-import { type APIRequestContext, type Page } from '@playwright/test'
 
 /**
  * API handler class
@@ -9,12 +8,15 @@ import { type APIRequestContext, type Page } from '@playwright/test'
 export class API {
   request: APIRequestContext
   page: Page
+  bool = false
   constructor(request, page = null) {
     this.request = request
     this.page = page
   }
-
-  async #makeRequest(endpoint: string, method: string, reqBody = null, token = null, params = null, formUrl = null, log = false) {
+  async enableLog(bool) {
+    this.bool = bool
+  }
+  async #makeRequest(endpoint: string, method: string, reqBody = null, token = null, params = null, formUrl = null, log = this.bool) {
     log ? Logger.logRequest(endpoint, reqBody) : null
     const res = await this.request[method](endpoint, {
       headers: token ? { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } : {},

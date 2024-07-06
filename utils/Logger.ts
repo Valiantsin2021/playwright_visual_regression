@@ -1,9 +1,9 @@
 //@ts-check
 
+import { type Page } from '@playwright/test'
 import chalk from 'chalk'
 import eyes from 'eyes'
 import fs from 'fs'
-import { type Page } from '@playwright/test'
 
 /**
  * Logger utility for pretify request-response output
@@ -32,7 +32,10 @@ export class Logger {
   static logToFile(message: string, logfile: string = './fixtures/temp/fails.log'): void {
     const date = new Date().toISOString()
     try {
-      fs.appendFileSync(logfile, `${date} - ${message}\n`)
+      if (!fs.existsSync(logfile)) {
+        fs.writeFileSync(logfile, '', { flag: 'wx' })
+      }
+      fs.appendFileSync(logfile, `${date} - ${message}\n`.replace(/\[\d+m/g, ''))
       console.log(Logger.color.success(`Log written to ${logfile}`))
     } catch (err) {
       console.error(Logger.color.error(`Failed write log to file ${logfile} with error: ${err.message}`))
@@ -67,7 +70,14 @@ export class Logger {
 
   static async logRequest(URL: string, data: object): Promise<void> {
     console.log(this.color.request(`\n<<<<<<<<<<<<<<<<< SENDING REQUEST <<<<<<<<<<<<<<<<<\nRequest URL: \n${this.color.info(URL)}\nRequest data: \n`))
-    this.inspect(data)
+    const toLog = { ...data }
+    const sensitiveKeysRegex = new RegExp('password|token|refresh|access|apiKey|authToken|authKey|refreshToken|accessToken|access_token|refresh_token', 'i')
+    Object.keys(toLog).forEach(key => {
+      if (sensitiveKeysRegex.test(key)) {
+        toLog[key] = '******'
+      }
+    })
+    this.inspect(toLog)
     console.log(this.color.request('<<<<<<<<<<<<<<<<< END OF REQUEST <<<<<<<<<<<<<<<<<'))
   }
 
@@ -81,7 +91,14 @@ export class Logger {
 
   static async logResponse(status: string | number, data: object): Promise<void> {
     console.log(this.color.response(`\n<<<<<<<<<<<<<<<<< RECEIVING RESPONSE <<<<<<<<<<<<<<<<<\nResponse status: \n${this.color.info(status)}\nResponse data: \n`))
-    this.inspect(data)
+    const toLog = { ...data }
+    const sensitiveKeysRegex = new RegExp('password|token|refresh|access|apiKey|authToken|authKey|refreshToken|accessToken|access_token|refresh_token', 'i')
+    Object.keys(toLog).forEach(key => {
+      if (sensitiveKeysRegex.test(key)) {
+        toLog[key] = '******'
+      }
+    })
+    this.inspect(toLog)
     console.log(this.color.response('<<<<<<<<<<<<<<<<< END OF RESPONSE <<<<<<<<<<<<<<<<<'))
   }
 

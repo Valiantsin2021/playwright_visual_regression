@@ -1,0 +1,7 @@
+2024-07-06T09:41:07.495Z - FAILED: GET Crocs -- failed 
+Error: Assert body[4]["age"] is a number 19
+
+expect(received).toBe(expected) // Object.is equality
+
+Expected: 21
+Received: 20

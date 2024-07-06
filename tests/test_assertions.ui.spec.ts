@@ -1,4 +1,5 @@
-import { test, expect } from '@fixtures/fixture'
+import { expect } from '@fixtures/fixture'
+import { test } from '@fixtures/fixtureApi'
 
 test(`request intercept, mock and control`, async ({ page }) => {
   await page.route('*/**/portal/**', async route => {
@@ -16,4 +17,9 @@ test(`request intercept, mock and control`, async ({ page }) => {
   page.off('requestfinished', listener)
   page.on('request', request => console.log(`Request sent: ${request.url()}`))
   await page.goto('https://www.openstreetmap.org/')
+})
+test(`assertions`, async ({ api }) => {
+  const response = await api.getReq('https://jsonplaceholder.typicode.com/todos/1')
+  await expect.soft(response).toBeOK()
+  expect.soft(response.status()).toBe(200)
 })
