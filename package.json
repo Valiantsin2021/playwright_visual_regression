@@ -18,8 +18,7 @@
     "format": "echo Formatting the code ⌛ && prettier --write ./tests/**/*.ts && echo \"✅ Code formatted, ready to commit!\"",
     "lint": "echo Linting the code ⌛ && eslint --fix && echo \"✅ Code linted, ready to commit!\"",
     "docs": "jsdoc -d docs -c jsdoc.config.json",
-    "code:check": "tsc --noEmit",
-    "prepare": "mkdir .husky && echo \"npx -y lint-staged\" > .husky/pre-commit"
+    "code:check": "tsc --noEmit"
   },
   "lint-staged": {
     "**/*.+(cjs|js|ts|tsx)": [
