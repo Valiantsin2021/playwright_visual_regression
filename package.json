@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "prepare": "git config core.hooksPath .hooks",
     "postinstall": "echo \"All dependencies were installed sucessfully ✅ You can now run tests by typing: npm run test\"",
     "clean": "echo \"❌ Cleaning the reports and downloads folders\"  && rimraf test-results/* && rimraf report/* && rimraf playwright-report/* && echo \"✅ All reports folders cleaned!\"",
     "pretest": "npm run clean",
@@ -19,11 +20,6 @@
     "lint": "echo Linting the code ⌛ && eslint --fix && echo \"✅ Code linted, ready to commit!\"",
     "docs": "jsdoc -d docs -c jsdoc.config.json",
     "code:check": "tsc --noEmit"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged"
-    }
   },
   "lint-staged": {
     "**/*.+(cjs|js|ts|tsx)": [
@@ -50,7 +46,6 @@
     "eslint-plugin-playwright": "^1.6.2",
     "eslint-plugin-prettier": "5.2.1",
     "eyes": "^0.1.8",
-    "husky": "^9.1.1",
     "monocart-reporter": "^2.6.1",
     "prettier": "3.3.3",
     "rimraf": "3.0.0",
