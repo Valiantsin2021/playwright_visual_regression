@@ -12,6 +12,7 @@ import { mergeExpects } from '@playwright/test'
 import { expect as toBeOneOfValuesExpect } from '@fixtures/toBeOneOfValues'
 import { expect as toBeValidDate } from '@fixtures/toBeValidDate'
 import { expect as typesExpects } from '@fixtures/typesExpects'
+import { expect as toMatchSchema } from '@fixtures/toMatchSchema'
 
 // Declare the types of your fixtures.
 type MyFixtures = {
@@ -70,4 +71,4 @@ export const test = base.extend<MyFixtures>({
     await use(cartPage)
   }
 })
-export const expect = mergeExpects(toBeOneOfValuesExpect, toBeValidDate, typesExpects)
+export const expect = mergeExpects(toBeOneOfValuesExpect, toBeValidDate, typesExpects, toMatchSchema)

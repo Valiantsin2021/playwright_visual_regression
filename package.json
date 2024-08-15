@@ -26,7 +26,7 @@
       "eslint --fix"
     ],
     "**/*.+(cjs|js|ts|json)": [
-      "prettier --write"
+      "prettier --cache --ignore-unknown --write"
     ]
   },
   "keywords": [],

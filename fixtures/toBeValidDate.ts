@@ -2,7 +2,9 @@ import { expect as baseExpect } from '@playwright/test'
 
 export { test } from '@playwright/test'
 
-export const expect = baseExpect.soft.extend({
+// eslint-disable-next-line playwright/require-soft-assertions
+export const expect = baseExpect.extend({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   toBeValidDate(received: any) {
     const pass = Date.parse(received) && typeof received === 'string' ? true : false
     if (pass) {

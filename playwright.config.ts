@@ -8,7 +8,6 @@ const isCI = !!process.env.CI
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  // workers: 3,
   timeout: 240_000,
   expect: {
     timeout: 15_000,
@@ -23,14 +22,13 @@ export default defineConfig({
       maxDiffPixels: 250
     }
   },
-  // ignoreSnapshots: !process.env.CI,
+  ignoreSnapshots: isCI,
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,
   workers: isCI ? 1 : undefined,
   reportSlowTests: null,
-  // ignoreSnapshots: isCI,
   snapshotPathTemplate: '.screenshots/snaps/{projectName}/{testFilePath}/{testName}/{arg}{ext}',
   reporter: [
     ['list', { printSteps: true }],
@@ -60,7 +58,7 @@ export default defineConfig({
   use: {
     bypassCSP: true,
     viewport: null,
-    launchOptions: { args: ['--start-maximized', '--ignore-certificate-errors'] },
+    launchOptions: { args: ['--start-maximized', '--ignore-certificate-errors', '--disable-search-engine-choice-screen'] },
     baseURL: 'https://www.automationexercise.com',
     headless: true,
     testIdAttribute: 'data-note',
